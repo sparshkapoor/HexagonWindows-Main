@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "E5797AA0-A524-4A26-A6CC-8F472EE9252A"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FA097854-379E-411A-9FA8-AF1492BD563B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../var/folders/r_/xgjz7rqd3nd2vzzk2gdk4bgh0000gp/T/swift-generated-sources/@__swiftmacro_14HexagonWindows11AIViewModelC5state18ObservationTrackedfMp_.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1"
+            endingLineNumber = "1"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "11C820C0-2E6C-4A9B-BF8F-B96DDA64521F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Library/Developer/Xcode/DerivedData/HexagonWindows-ezwwfesvhswtuhfvjjpenyqkqjvl/SourcePackages/checkouts/cmdCenterAI/Sources/cmdCenterAI/ViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "ViewModel"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "11C820C0-2E6C-4A9B-BF8F-B96DDA64521F - aaf20d51de81aff7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cmdCenterAI.ViewModel.selectedVoice.modify : cmdCenterAI.VoiceType"
+                  moduleName = "HexagonWindows"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sparshkapoor/Library/Developer/Xcode/DerivedData/HexagonWindows-ezwwfesvhswtuhfvjjpenyqkqjvl/SourcePackages/checkouts/cmdCenterAI/Sources/cmdCenterAI/ViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28">
+               </Location>
+               <Location
+                  uuid = "11C820C0-2E6C-4A9B-BF8F-B96DDA64521F - 2784aa131880a48b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cmdCenterAI.ViewModel.selectedVoice.modify : cmdCenterAI.VoiceType with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "HexagonWindows"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sparshkapoor/Library/Developer/Xcode/DerivedData/HexagonWindows-ezwwfesvhswtuhfvjjpenyqkqjvl/SourcePackages/checkouts/cmdCenterAI/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "11C820C0-2E6C-4A9B-BF8F-B96DDA64521F - 8745f018e087aa23"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cmdCenterAI.ViewModel.init() -&gt; cmdCenterAI.ViewModel"
+                  moduleName = "HexagonWindows"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sparshkapoor/Library/Developer/Xcode/DerivedData/HexagonWindows-ezwwfesvhswtuhfvjjpenyqkqjvl/SourcePackages/checkouts/cmdCenterAI/Sources/cmdCenterAI/ViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
