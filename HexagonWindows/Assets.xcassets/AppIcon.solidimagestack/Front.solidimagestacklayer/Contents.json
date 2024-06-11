@@ -5,8 +5,8 @@
   },
   "properties" : {
     "frame-size" : {
-      "height" : 297.5,
-      "width" : 300
+      "height" : 512,
+      "width" : 512
     }
   }
 }

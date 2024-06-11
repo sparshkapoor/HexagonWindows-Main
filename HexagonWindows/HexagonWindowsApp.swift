@@ -16,9 +16,9 @@ struct HexagonWindows: App {
         WindowGroup {
             OpenCmdCenter()
                 .background(Color.clear)
-                .frame(width: 500, height: 100)
+                .frame(width: 500, height: 200)
                 } .windowStyle(.plain)
-                  .defaultSize(CGSize(width: 400, height: 75))
+                  .defaultSize(CGSize(width: 400, height: 200))
         
         ImmersiveSpace(id: "ImmersiveSpace") {
             ImmersiveView()

@@ -45,7 +45,7 @@
 		A8141C692C139EFB0076953D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../../StreetVision-main/StreetVision/Info.plist"; sourceTree = "<group>"; };
 		A8141C702C13A0560076953D /* StreetViewImmersive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetViewImmersive.swift; sourceTree = "<group>"; };
 		A823C9E52C173E6300EBEB15 /* WindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
-		A85AD9262C0641EB005761B0 /* HexagonWindows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HexagonWindows.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A85AD9262C0641EB005761B0 /* AFLINX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AFLINX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A85AD9292C0641EB005761B0 /* HexagonWindowsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonWindowsApp.swift; sourceTree = "<group>"; };
 		A85AD92B2C0641EB005761B0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A85AD92D2C0641EE005761B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 		A85AD9272C0641EB005761B0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A85AD9262C0641EB005761B0 /* HexagonWindows.app */,
+				A85AD9262C0641EB005761B0 /* AFLINX.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -253,7 +253,7 @@
 				A8141C6C2C139F130076953D /* cmdCenterAI */,
 			);
 			productName = HexagonWindows;
-			productReference = A85AD9262C0641EB005761B0 /* HexagonWindows.app */;
+			productReference = A85AD9262C0641EB005761B0 /* AFLINX.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -487,7 +487,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.WorkMerk.HexagonWindows;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AFLINX;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "xrsimulator xros";
@@ -532,7 +532,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.WorkMerk.HexagonWindows;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AFLINX;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "xrsimulator xros";
