@@ -37,7 +37,7 @@ struct OpenCmdCenter: View {
                 .padding(20)
                 .navigationTitle("Command Center")
                 .buttonStyle(.plain)
-                .frame(width: 100, height: 100)
+                .frame(width: 120, height: 120)
                 Spacer()
                     .frame(minWidth: 100)
                 Button(action: {
@@ -50,7 +50,7 @@ struct OpenCmdCenter: View {
                         .background(Color.clear)
                         .cornerRadius(10)
                         .animation(.easeInOut(duration: 0.2))
-                        .frame(width: 100, height: 100)
+                        .frame(width: 68, height: 68)
                 }
                 .buttonStyle(.plain)
                 .onHover { hovering in
@@ -60,6 +60,7 @@ struct OpenCmdCenter: View {
                     AIAssistViewWrapper(viewModel: $viewModel, showAiAssistView: $showAiAssistView)
                         .frame(width: 400, height: 500)
                 }
+                .frame(width: 75, height: 100)
                 Spacer()
                     .frame(minWidth: 100)
                 Button(action: {
@@ -72,16 +73,17 @@ struct OpenCmdCenter: View {
                         .background(Color.clear)
                         .cornerRadius(10)
                         .animation(.easeInOut(duration: 0.2))
-                        .frame(width: 100, height: 100)
+                        .frame(width: 68, height: 68)
                 }
                 .buttonStyle(.plain)
                 .fullScreenCover(isPresented: $showGoogleStreetView) {
                     GoogleStreetViewWrapper(showGoogleStreetView: $showGoogleStreetView)
                 }
+                .frame(width: 75, height: 100)
             Spacer()
             }
             Spacer()
-                .frame(maxHeight: 100)
+                .frame(minHeight: 20)
             Toggle("Base View", isOn: $showImmersiveSpace)
                 .background(Color.clear)
                 .foregroundColor(.white)

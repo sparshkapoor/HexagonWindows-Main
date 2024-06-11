@@ -18,13 +18,12 @@ struct HexagonWindows: App {
                 .background(Color.clear)
                 .frame(width: 500, height: 200)
                 } .windowStyle(.plain)
-                  .defaultSize(CGSize(width: 400, height: 200))
+                  .defaultSize(CGSize(width: 1225, height: 720))
         
         ImmersiveSpace(id: "ImmersiveSpace") {
             ImmersiveView()
         }
         .immersionStyle(selection: .constant(.full), in: .mixed)
-        
         ImmersiveSpace(id: "StreetView") {
             StreetViewImmersive()
         }
