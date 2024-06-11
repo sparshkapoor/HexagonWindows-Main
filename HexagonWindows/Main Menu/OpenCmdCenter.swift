@@ -50,7 +50,7 @@ struct OpenCmdCenter: View {
                         .background(Color.clear)
                         .cornerRadius(10)
                         .animation(.easeInOut(duration: 0.2))
-                        .frame(width: 120, height: 120)
+                        .frame(width: 100, height: 100)
                 }
                 .buttonStyle(.plain)
                 .onHover { hovering in
@@ -72,7 +72,7 @@ struct OpenCmdCenter: View {
                         .background(Color.clear)
                         .cornerRadius(10)
                         .animation(.easeInOut(duration: 0.2))
-                        .frame(width: 120, height: 120)
+                        .frame(width: 100, height: 100)
                 }
                 .buttonStyle(.plain)
                 .fullScreenCover(isPresented: $showGoogleStreetView) {
@@ -80,6 +80,8 @@ struct OpenCmdCenter: View {
                 }
             Spacer()
             }
+            Spacer()
+                .frame(maxHeight: 100)
             Toggle("Base View", isOn: $showImmersiveSpace)
                 .background(Color.clear)
                 .foregroundColor(.white)
