@@ -9,6 +9,6 @@ import Foundation
 
 enum GoogleMapsAPIKey {
 
-    static let apiKey = "API-KEY"
+    static let apiKey = "STREET_API-KEY"
 
 }

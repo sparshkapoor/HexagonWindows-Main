@@ -6,24 +6,18 @@
 //
 
 
-//
-//  ViewModels.swift
-//  HexagonWindows
-//
-//  Created by Sparsh Kapoor on 5/31/24.
-//
-
 import AVFoundation
 import Foundation
 import Observation
 import ChatGPTSwift
 import cmdCenterAI
 
+
 @Observable
 class ViewModels: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     
     // ChatGPT API client for interacting with the ChatGPT service
-    let client = ChatGPTAPI(apiKey: "API-KEY")
+    let client = ChatGPTAPI(apiKey: "API_KEY")
     
     // Audio player and recorder instances
     var audioPlayer: AVAudioPlayer!
