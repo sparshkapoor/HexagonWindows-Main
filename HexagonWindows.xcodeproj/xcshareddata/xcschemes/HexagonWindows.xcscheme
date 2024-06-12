@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A85AD9252C0641EB005761B0"
-               BuildableName = "HexagonWindows.app"
+               BuildableName = "AFLINX.app"
                BlueprintName = "HexagonWindows"
                ReferencedContainer = "container:HexagonWindows.xcodeproj">
             </BuildableReference>
@@ -69,7 +69,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A85AD9252C0641EB005761B0"
-            BuildableName = "HexagonWindows.app"
+            BuildableName = "AFLINX.app"
             BlueprintName = "HexagonWindows"
             ReferencedContainer = "container:HexagonWindows.xcodeproj">
          </BuildableReference>
@@ -86,7 +86,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A85AD9252C0641EB005761B0"
-            BuildableName = "HexagonWindows.app"
+            BuildableName = "AFLINX.app"
             BlueprintName = "HexagonWindows"
             ReferencedContainer = "container:HexagonWindows.xcodeproj">
          </BuildableReference>

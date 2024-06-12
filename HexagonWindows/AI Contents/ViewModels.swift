@@ -6,6 +6,13 @@
 //
 
 
+//
+//  ViewModels.swift
+//  HexagonWindows
+//
+//  Created by Sparsh Kapoor on 5/31/24.
+//
+
 import AVFoundation
 import Foundation
 import Observation
@@ -15,27 +22,41 @@ import cmdCenterAI
 @Observable
 class ViewModels: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     
+    // ChatGPT API client for interacting with the ChatGPT service
     let client = ChatGPTAPI(apiKey: "API-KEY")
+    
+    // Audio player and recorder instances
     var audioPlayer: AVAudioPlayer!
     var audioRecorder: AVAudioRecorder!
+    
     #if !os(macOS)
+    // Audio session for managing audio recording and playback
     var recordingSession = AVAudioSession.sharedInstance()
     #endif
+    
+    // Timers for managing animations and recording duration
     var animationTimer: Timer?
     var recordingTimer: Timer?
+    
+    // Audio power level for visual feedback
     var audioPower = 0.0
     var prevAudioPower: Double?
-    var processingSpeechTask: Task<Void, Never>?
-        
     
+    // Task for processing speech in the background
+    var processingSpeechTask: Task<Void, Never>?
+    
+    // URL to save the captured audio file
     var captureURL: URL {
         FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
             .first!.appendingPathComponent("recording.m4a")
     }
     
+    // State management for voice chat
     var state = VoiceChatState.idle {
         didSet { print(state) }
     }
+    
+    // Check if the state is idle
     var isIdle: Bool {
         if case .idle = state {
             return true
@@ -43,6 +64,7 @@ class ViewModels: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
         return false
     }
     
+    // Opacity for Siri waveform animation based on state
     var siriWaveFormOpacity: CGFloat {
         switch state {
         case .recordingSpeech, .playingSpeech: return 1
@@ -52,6 +74,8 @@ class ViewModels: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     
     override init() {
         super.init()
+        
+        // Configure audio session for recording and playback
         #if !os(macOS)
         do {
             #if os(iOS)
@@ -61,7 +85,8 @@ class ViewModels: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
             #endif
             try recordingSession.setActive(true)
             
-            AVAudioApplication.requestRecordPermission { [unowned self] allowed in
+            // Request permission to record audio
+            AVAudioSession.sharedInstance().requestRecordPermission { [unowned self] allowed in
                 if !allowed {
                     self.state = .error("Recording not allowed by the user" as Error)
                 }
@@ -72,10 +97,12 @@ class ViewModels: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
         #endif
     }
     
+    // Start capturing audio
     func startCaptureAudio() {
         resetValues()
         state = .recordingSpeech
         do {
+            // Configure audio recorder
             audioRecorder = try AVAudioRecorder(url: captureURL,
                                                 settings: [
                                                     AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -87,6 +114,7 @@ class ViewModels: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
             audioRecorder.delegate = self
             audioRecorder.record()
             
+            // Timer to update audio power for animation
             animationTimer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true, block: { [unowned self]_ in
                 guard self.audioRecorder != nil else { return }
                 self.audioRecorder.updateMeters()
@@ -94,6 +122,7 @@ class ViewModels: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
                 self.audioPower = power
             })
             
+            // Timer to monitor recording duration and stop if silence is detected
             recordingTimer = Timer.scheduledTimer(withTimeInterval: 1.6, repeats: true, block: { [unowned self]_ in
                 guard self.audioRecorder != nil else { return }
                 self.audioRecorder.updateMeters()
@@ -115,6 +144,7 @@ class ViewModels: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
         }
     }
     
+    // Stop capturing audio
     func stopCaptureAudio() {
         // Stop the audio recorder
         if audioRecorder != nil {
@@ -137,7 +167,7 @@ class ViewModels: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
         }
     }
     
-    
+    // Finish capturing audio and process the recorded data
     func finishCaptureAudio() {
         resetValues()
         do {
@@ -148,30 +178,35 @@ class ViewModels: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
             resetValues()
         }
     }
-    
+
     func processSpeechTask(audioData: Data) -> Task<Void, Never> {
-        Task { @MainActor [unowned self] in
-            do {
-                self.state = .processingSpeech
-                let prompt = try await client.generateAudioTransciptions(audioData: audioData)
-                
-                try Task.checkCancellation()
-                let responseText = try await client.sendMessage(text:prompt)
-                                
-                try Task.checkCancellation()
-                let data = try await client.generateSpeechFrom(input: responseText, voice:
-                        .alloy)
-                
-                try Task.checkCancellation()
-                try self.playAudio(data: data)
-            } catch {
-                if Task.isCancelled { return }
-                state = .error(error)
-                resetValues()
+            Task { @MainActor [unowned self] in
+                do {
+                    self.state = .processingSpeech
+                    // Generate audio transcription
+                    let prompt = try await client.generateAudioTransciptions(audioData: audioData)
+                    
+                    // Send transcription to ChatGPT and get response
+                    try Task.checkCancellation()
+                    let responseText = try await client.sendMessage(text:prompt)
+                              
+                    // Generate speech from the response text
+                    try Task.checkCancellation()
+                    let data = try await client.generateSpeechFrom(input: responseText, voice:
+                            .alloy)
+                    
+                    // Play the generated speech
+                    try Task.checkCancellation()
+                    try self.playAudio(data: data)
+                } catch {
+                    if Task.isCancelled { return }
+                    state = .error(error)
+                    resetValues()
+                }
             }
         }
-    }
     
+    // Play audio data
     func playAudio(data: Data) throws {
         self.state = .playingSpeech
         audioPlayer = try AVAudioPlayer(data: data)
@@ -179,6 +214,7 @@ class ViewModels: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
         audioPlayer.delegate = self
         audioPlayer.play()
         
+        // Timer to update audio power for animation during playback
         animationTimer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true, block: { [unowned self]_ in
             guard self.audioPlayer != nil else { return }
             self.audioPlayer.updateMeters()
@@ -187,14 +223,13 @@ class ViewModels: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
         })
     }
     
-    
-    
-    
+    // Cancel recording and reset state
     func cancelRecording() {
         resetValues()
         state = .idle
     }
     
+    // Cancel the speech processing task
     func cancelProcessingTask() {
         processingSpeechTask?.cancel()
         processingSpeechTask = nil
@@ -202,6 +237,7 @@ class ViewModels: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
         state = .idle
     }
     
+    // Delegate method called when audio recording finishes
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         if !flag {
             resetValues()
@@ -209,12 +245,13 @@ class ViewModels: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
         }
     }
     
+    // Delegate method called when audio playback finishes
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         resetValues()
         state = .idle
     }
     
-    
+    // Reset all relevant values and states
     func resetValues() {
         audioPower = 0
         prevAudioPower = nil
@@ -227,5 +264,5 @@ class ViewModels: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
         animationTimer?.invalidate()
         animationTimer = nil
     }
-    
 }
+
