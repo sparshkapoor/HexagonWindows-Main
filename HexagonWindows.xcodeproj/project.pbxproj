@@ -56,6 +56,7 @@
 		A85AD9472C0641EE005761B0 /* HexagonWindowsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonWindowsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A89C9DFE2C0A10AD0037CADD /* AIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIModels.swift; sourceTree = "<group>"; };
 		A89C9E002C0A11620037CADD /* ViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModels.swift; sourceTree = "<group>"; };
+		A8E0B8082C19E00C006DCB66 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		A8EDABD32C0F533100B86DAD /* ImmersiveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImmersiveView.swift; sourceTree = "<group>"; };
 		A8EDABD52C0F539900B86DAD /* ImageBasedLighting.skybox */ = {isa = PBXFileReference; lastKnownFileType = file.skybox; path = ImageBasedLighting.skybox; sourceTree = "<group>"; };
 		A8F587972C13973700A54DE4 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -156,6 +157,7 @@
 		A85AD9282C0641EB005761B0 /* HexagonWindows */ = {
 			isa = PBXGroup;
 			children = (
+				A8E0B8072C19DFF4006DCB66 /* SecretsManager */,
 				A8141C692C139EFB0076953D /* Info.plist */,
 				A8F587962C13970D00A54DE4 /* Street View Contents */,
 				A85AD9442C0641EE005761B0 /* HexagonWindowsUITests */,
@@ -206,6 +208,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A8E0B8072C19DFF4006DCB66 /* SecretsManager */ = {
+			isa = PBXGroup;
+			children = (
+				A8E0B8082C19E00C006DCB66 /* Config.xcconfig */,
+			);
+			path = SecretsManager;
 			sourceTree = "<group>";
 		};
 		A8EDABD82C0F53AB00B86DAD /* Packages */ = {
